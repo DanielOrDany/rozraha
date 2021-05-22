@@ -18,9 +18,10 @@ app.use(bodyParser.json());
 
 app.use('/api/v1', v1Router);
 
-v1Router.use('/test', () => {
-    console.log("works");
-});
+// imports for our routes
+import usersRoutes from "./users/routes/index.js";
+
+v1Router.use('/users', usersRoutes);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
