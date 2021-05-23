@@ -16,7 +16,7 @@ export class Users {
     async create(data) {
         return this.model.create({
             created_at: Date.now(),
-            deleted_at: null,
+            deleted_at: 0,
             ...data
         });
     }
