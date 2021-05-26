@@ -41,8 +41,23 @@ export class Orders {
         });
     }
 
-    async returnBook(data) {
-        const book = new Books().get(data.book_id);
-        const updatedBook = new Books().update(data.book_id, book);
+    async getOrdersPagination(page, count) {
+        let nPage = +page;
+        let nCount = +count;
+
+        const offset = nPage * nCount - nCount;
+
+        try {
+            return this.model.findAll({
+                offset,
+                limit: nCount,
+                order: [
+                    ['created_at', 'DESC'],
+                ]
+            });
+        } catch (err) {
+            throw err;
+        }
+
     }
 }

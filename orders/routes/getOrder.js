@@ -2,7 +2,14 @@ import {GetOrdersUseCase} from "../useCases/getOrders.js";
 
 export async function getOrders(req, res) {
     try {
-        const orders = await new GetOrdersUseCase().getOrders();
+        let page = req.query.page || '1';
+        let count = req.query.count || '20';
+        page = page?.toString();
+        count = count?.toString();
+
+        console.log(`page = ${page}, count = ${count}`)
+
+        const orders = await new GetOrdersUseCase().getOrders(page, count);
 
         if (orders) {
             res.json({
