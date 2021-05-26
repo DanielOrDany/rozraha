@@ -21,6 +21,18 @@ export class Orders {
         });
     }
 
+    async getAll() {
+        return this.model.findAll({});
+    }
+
+    async getById(id) {
+        return this.model.findOne({
+            where: {
+                id: id
+            }
+        });
+    }
+
     async returnBook(data) {
         const book = new Books().get(data.book_id);
         const updatedBook = new Books().update(data.book_id, book);
