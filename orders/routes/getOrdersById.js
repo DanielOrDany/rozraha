@@ -1,15 +1,14 @@
 import {GetOrdersUseCase} from "../useCases/getOrders.js";
-import {ReturnBookUseCase} from "../useCases/returnBook.js";
 
-export async function returnBook(req, res) {
+export async function getOrderById(req, res) {
     try {
         const id = req.params.id;
 
-        const orders = await new ReturnBookUseCase().returnBook(id);
+        const order = await new GetOrdersUseCase().getOrderById(id);
 
-        if (orders) {
+        if (order) {
             res.json({
-                data: orders
+                data: order
             });
         } else {
             throw 'Something went wrong, try again';

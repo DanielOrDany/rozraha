@@ -25,6 +25,14 @@ export class Orders {
         return this.model.findAll({});
     }
 
+    async update(id, data) {
+        return this.model.update(data, {
+            where: {
+                id: id
+            }
+        });
+    }
+
     async getById(id) {
         return this.model.findOne({
             where: {

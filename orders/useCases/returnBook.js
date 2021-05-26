@@ -7,8 +7,9 @@ export class ReturnBookUseCase {
 
         console.log(`order with id ${id} was found`);
 
-        const book = new Books().update(order.book_id, { updatedAt: new Date.now() })
+        const book = new Books().update(order.book_id, { updatedAt: Date.now() })
+        const updateOrder = new Orders().update(order.id, { returned_at: Date.now() })
 
-        return order;
+        return updateOrder;
     }
 }
