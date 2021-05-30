@@ -6,13 +6,13 @@ export async function editUser(req, res) {
         const id = req.params.id;
         const userData = req.body;
 
-        const verified = verifyOnCreateNewUser(bookData);
+        const verified = verifyOnCreateNewUser(userData);
 
         if (!verified) {
             throw 'User data is not correct.';
         }
 
-        const user = await new EditUserUseCase().editBook(id, userData);
+        const user = await new EditUserUseCase().editUser(id, userData);
 
         if (user) {
             res.json({
