@@ -28,7 +28,7 @@ const ordersShema = {
     },
     returned_at: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true
     },
     created_at: {
         type: Sequelize.BIGINT,
