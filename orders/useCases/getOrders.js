@@ -9,6 +9,14 @@ export class GetOrdersUseCase {
         return orders;
     }
 
+    async getOrdersWithoutPagination() {
+        const orders = await new Orders().getAll();
+
+        console.log(`${orders.size} orders were found`);
+
+        return orders;
+    }
+
     async getOrderById(id) {
         const orders = await new Orders().getById(id);
 
