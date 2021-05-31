@@ -2,7 +2,7 @@ import {GetOrdersUseCase} from "../useCases/getOrders.js";
 
 export async function getOrdersFinances(req, res) {
     try {
-        const orders = await new GetOrdersUseCase().getOrders();
+        const orders = await new GetOrdersUseCase().getOrdersWithoutPagination();
 
         if (orders) {
 
